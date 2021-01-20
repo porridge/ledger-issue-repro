@@ -1,6 +1,6 @@
 
-2020-08-03 ! t1
-    Aktywa:Inwestycje:Obligacje SP:Rodzinne    15 ObligacjaSP @ 100 PLN
-    ; koniec:: [2032-08-03]
-    Aktywa:CA:ROR                                  -1500,00 PLN
+2020-08-03 t1
+    a1  1 COMMA @ 1 PLN
+    ; ending:: [2032-08-03]
+    a3
 

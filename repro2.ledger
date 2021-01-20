@@ -1,5 +1,5 @@
 
-2020-09-01 ! t2
-    Aktywa:Inwestycje:Obligacje SP:4-letnie COI    2 ObligacjeSP @ 100 PLN
-    ; koniec:: [2024-09-01]
-    Aktywa:CA:ROR
+2020-09-01 t2
+    a2   1 COMMB @ 1 PLN
+    ; ending:: [2024-09-01]
+    a3

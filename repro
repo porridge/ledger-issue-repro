@@ -2,5 +2,5 @@
 set -e
 set -x
 echo TESTING WITH "$@"
-ledger --market -f "$@" --limit "(pending) & has_tag('koniec') & (tag('koniec') < (today + (999 * 365)))" --sort "tag('koniec')" --format "%(format_date(tag('koniec'), '%Y-%m-%d')) %(justify(amount, 50, -1, true, true)) start %(format_date(date, '%Y-%m-%d')) %(account) %(payee)\n" reg
+ledger --market -f "$@" --limit "has_tag('ending')" --sort "tag('ending')" --format "%(format_date(tag('ending'), '%Y-%m-%d')) %(account) %(payee)\n" reg
 echo
