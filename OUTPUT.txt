@@ -21,10 +21,5 @@ TESTING WITH repro.ledger ---------------------------------------------
 + ledger --market -f repro.ledger --limit 'has_tag('\''ending'\'')' --sort 'tag('\''ending'\'')' --format '%(format_date(tag('\''ending'\''), '\''%Y-%m-%d'\'')) %(account) %(payee)\n' reg
 2024-09-01 a2 t2
 2024-09-01 a3 t2
-While evaluating value expression:
-  format_date(tag("ending"), "%Y-%m-%d")
-  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-While converting :
-While calling function 'format_date (, %Y-%m-%d)':
-Error: Cannot convert an uninitialized value to a date
-make: *** [Makefile:8: repro] Error 1
+2032-08-03 a1 t1
+2032-08-03 a3 t1
