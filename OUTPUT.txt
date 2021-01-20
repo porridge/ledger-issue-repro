@@ -8,8 +8,8 @@ See LICENSE file included with the distribution for details and disclaimer.
 ./repro repro1.ledger
 TESTING WITH repro1.ledger ---------------------------------------------
 + ledger --market -f repro1.ledger --limit 'has_tag('\''ending'\'')' --sort 'tag('\''ending'\'')' --format '%(format_date(tag('\''ending'\''), '\''%Y-%m-%d'\'')) %(account) %(payee)\n' reg
-2032-08-03 a1 t1
-2032-08-03 a3 t1
+2024-09-01 a1 t1
+2024-09-01 a3 t1
 ./repro repro2.ledger
 TESTING WITH repro2.ledger ---------------------------------------------
 + ledger --market -f repro2.ledger --limit 'has_tag('\''ending'\'')' --sort 'tag('\''ending'\'')' --format '%(format_date(tag('\''ending'\''), '\''%Y-%m-%d'\'')) %(account) %(payee)\n' reg
@@ -19,12 +19,7 @@ cat repro1.ledger repro2.ledger > repro.ledger
 ./repro repro.ledger
 TESTING WITH repro.ledger ---------------------------------------------
 + ledger --market -f repro.ledger --limit 'has_tag('\''ending'\'')' --sort 'tag('\''ending'\'')' --format '%(format_date(tag('\''ending'\''), '\''%Y-%m-%d'\'')) %(account) %(payee)\n' reg
+2024-09-01 a1 t1
+2024-09-01 a3 t1
 2024-09-01 a2 t2
 2024-09-01 a3 t2
-While evaluating value expression:
-  format_date(tag("ending"), "%Y-%m-%d")
-  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-While converting :
-While calling function 'format_date (, %Y-%m-%d)':
-Error: Cannot convert an uninitialized value to a date
-make: *** [Makefile:8: repro] Error 1
