@@ -8,26 +8,26 @@ See LICENSE file included with the distribution for details and disclaimer.
 ./repro repro1.ledger
 TESTING WITH repro1.ledger ---------------------------------------------
 + ledger --market -f repro1.ledger --limit 'has_tag('\''ending'\'')' --format '%(format_date(tag('\''ending'\''), '\''%Y-%m-%d'\'')) %(account) %(payee)\n' reg
-2070-01-01 a1 t1
-2070-01-01 a2 t1
+1950-01-01 a1 t1
+1950-01-01 a2 t1
 ./repro repro2.ledger
 TESTING WITH repro2.ledger ---------------------------------------------
 + ledger --market -f repro2.ledger --limit 'has_tag('\''ending'\'')' --format '%(format_date(tag('\''ending'\''), '\''%Y-%m-%d'\'')) %(account) %(payee)\n' reg
-2070-01-01 a1 t2
-2070-01-01 a3 t2
+1950-01-01 a1 t2
+1950-01-01 a3 t2
 cat repro1.ledger repro2.ledger > repro.ledger
 ./repro repro.ledger
 TESTING WITH repro.ledger ---------------------------------------------
 + ledger --market -f repro.ledger --limit 'has_tag('\''ending'\'')' --format '%(format_date(tag('\''ending'\''), '\''%Y-%m-%d'\'')) %(account) %(payee)\n' reg
-2070-01-01 a1 t1
-2070-01-01 a2 t1
+1950-01-01 a1 t1
+1950-01-01 a2 t1
 While evaluating value expression:
   format_date(tag("ending"), "%Y-%m-%d")
   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 While converting :
 While calling function 'format_date (, %Y-%m-%d)':
 While handling posting from "/srv/home/porridge/Pulpit/memory/finanse/ledger/bug/repro.ledger", lines 10-11:
->     a1        -10 GOOG @ 5 USD
->     ; ending:: [2070-01-01]
+>     a1       -10 GOOG @ 4 USD
+>     ; ending:: [1950-01-01]
 Error: Cannot convert an uninitialized value to a date
 make: *** [Makefile:8: repro] Error 1
