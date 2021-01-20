@@ -21,13 +21,5 @@ TESTING WITH repro.ledger ---------------------------------------------
 + ledger --market -f repro.ledger --limit 'has_tag('\''ending'\'')' --format '%(format_date(tag('\''ending'\''), '\''%Y-%m-%d'\'')) %(account) %(payee)\n' reg
 1950-01-01 a1 t1
 1950-01-01 a2 t1
-While evaluating value expression:
-  format_date(tag("ending"), "%Y-%m-%d")
-  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-While converting :
-While calling function 'format_date (, %Y-%m-%d)':
-While handling posting from "/srv/home/porridge/Pulpit/memory/finanse/ledger/bug/repro.ledger", lines 10-11:
->     a1       -10 GOOG @ 4 USD
->     ; ending:: [1950-01-01]
-Error: Cannot convert an uninitialized value to a date
-make: *** [Makefile:8: repro] Error 1
+1950-01-01 a1 t2
+1950-01-01 a3 t2
