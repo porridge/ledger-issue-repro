@@ -1,6 +1,5 @@
 #!/bin/bash
 set -e
+echo TESTING WITH "$@" ---------------------------------------------
 set -x
-echo TESTING WITH "$@"
 ledger --market -f "$@" --limit "has_tag('ending')" --sort "tag('ending')" --format "%(format_date(tag('ending'), '%Y-%m-%d')) %(account) %(payee)\n" reg
-echo
