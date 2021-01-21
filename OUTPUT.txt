@@ -5,26 +5,21 @@ Copyright (c) 2003-2019, John Wiegley.  All rights reserved.
 
 This program is made available under the terms of the BSD Public License.
 See LICENSE file included with the distribution for details and disclaimer.
-./repro repro1.ledger
-TESTING WITH repro1.ledger ---------------------------------------------
-+ ledger --market -f repro1.ledger --limit 'has_tag('\''ending'\'')' --sort 'tag('\''ending'\'')' --format '%(format_date(tag('\''ending'\''), '\''%Y-%m-%d'\'')) %(account) %(payee)\n' reg
-2032-08-03 a1 t1
-2032-08-03 a3 t1
-./repro repro2.ledger
-TESTING WITH repro2.ledger ---------------------------------------------
-+ ledger --market -f repro2.ledger --limit 'has_tag('\''ending'\'')' --sort 'tag('\''ending'\'')' --format '%(format_date(tag('\''ending'\''), '\''%Y-%m-%d'\'')) %(account) %(payee)\n' reg
-2024-09-01 a2 t2
-2024-09-01 a3 t2
-cat repro1.ledger repro2.ledger > repro.ledger
 ./repro repro.ledger
-TESTING WITH repro.ledger ---------------------------------------------
-+ ledger --market -f repro.ledger --limit 'has_tag('\''ending'\'')' --sort 'tag('\''ending'\'')' --format '%(format_date(tag('\''ending'\''), '\''%Y-%m-%d'\'')) %(account) %(payee)\n' reg
-2024-09-01 a2 t2
-2024-09-01 a3 t2
-While evaluating value expression:
-  format_date(tag("ending"), "%Y-%m-%d")
-  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-While converting :
-While calling function 'format_date (, %Y-%m-%d)':
-Error: Cannot convert an uninitialized value to a date
-make: *** [Makefile:8: repro] Error 1
++ ledger -f repro.ledger register Income
+17-Jul-01 t1                                                      Income:Sub1                                                                               -10 USD                           -10 USD
+19-Jul-01 t2                                                      Income:Sub1                                                                              -100 USD                          -110 USD
+                                                                  Income:Sub2                                                                             -1000 USD                         -1110 USD
+./repro repro.ledger --invert
++ ledger -f repro.ledger --invert register Income
+17-Jul-01 t1                                                      Income:Sub1                                                                                10 USD                            10 USD
+19-Jul-01 t2                                                      Income:Sub1                                                                               100 USD                           110 USD
+                                                                  Income:Sub2                                                                              1000 USD                          1110 USD
+./repro repro.ledger --collapse
++ ledger -f repro.ledger --collapse register Income
+17-Jul-01 t1                                                      Income:Sub1                                                                               -10 USD                           -10 USD
+19-Jul-01 t2                                                      <Total>                                                                                 -1100 USD                         -1110 USD
+./repro repro.ledger --invert --collapse
++ ledger -f repro.ledger --invert --collapse register Income
+17-Jul-01 t1                                                      Income:Sub1                                                                                10 USD                            10 USD
+19-Jul-01 t2                                                      <Total>                                                                                 -1100 USD                          1110 USD

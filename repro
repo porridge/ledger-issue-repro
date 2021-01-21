@@ -1,5 +1,4 @@
 #!/bin/bash
 set -e
-echo TESTING WITH "$@" ---------------------------------------------
 set -x
-ledger --market -f "$@" --limit "has_tag('ending')" --sort "tag('ending')" --format "%(format_date(tag('ending'), '%Y-%m-%d')) %(account) %(payee)\n" reg
+ledger -f "$@" register Income
