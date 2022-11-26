@@ -1,9 +1,7 @@
 #!/usr/bin/python3
+import locale
 import argparse
 import sys
-
-import gi
-gi.require_version('Gtk', '3.0')
 
 import ledger
 
@@ -18,19 +16,19 @@ _transaction = """
 def main():
     args = get_args()
 
-    if args.when_import == "never":
-        print("not loading gtk at all")
+    if args.when_set_locale == "never":
+        print("not setting locale at all")
 
-    if args.when_import == "at_start":
-        print("loading gtk before journal load")
-        from gi.repository import Gtk
+    if args.when_set_locale == "at_start":
+        print("setting locale before journal load")
+        locale.setlocale(locale.LC_ALL, '')
 
     session, journal = load()
     postings = list(journal.query(""))
 
-    if args.when_import == "after_query":
-        print("loading gtk after query")
-        from gi.repository import Gtk
+    if args.when_set_locale == "after_query":
+        print("setting locale after query")
+        locale.setlocale(locale.LC_ALL, '')
 
     print("query() returned %d postings, for accounts: %s" % (len(postings), [p.account.name for p in postings]))
 
@@ -42,7 +40,7 @@ def main():
 
 def get_args():
     parser = argparse.ArgumentParser()
-    parser.add_argument("when_import", choices=["never", "at_start", "after_query"], default="never")
+    parser.add_argument("when_set_locale", choices=["never", "at_start", "after_query"], default="never")
     return parser.parse_args()
 
 
