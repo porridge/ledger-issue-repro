@@ -5,4 +5,5 @@ cases for unexpected behavior I found in ledger.
 
 - [01-uninitialized-tag](01-uninitialized-tag) - [tags become spontaneously corrupted](https://github.com/ledger/ledger/issues/1993) - see also other branches that iterate on this case
 - [02-segfault-on-destruction](02-segfault-on-destruction) - [Python program crashes on exit](https://bugs.debian.org/1024389)
-- [03-another-import-changes-precision](03-another-import-changes-precision) - importing `gtk` causes precision to change and postings to appear
+
+- [03-setting-locale-changes-precision](03-setting-locale-changes-precision) - setting locale causes precision to change and postings to appear
